@@ -7,7 +7,7 @@ go-alert
 ## Quick start
 
 ```go
-go get github.com/pefish/go-alert
+go get github.com/pefish/go-alert@latest
 ```
 
 ## Document
