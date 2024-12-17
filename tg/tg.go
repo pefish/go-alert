@@ -1,4 +1,4 @@
-package tg
+package tg_alert
 
 import (
 	"fmt"
@@ -21,7 +21,8 @@ func New(logger i_logger.ILogger, token string, groupId string) *TgAgent {
 	}
 }
 
-func (i *TgAgent) Info(msg string) error {
+func (i *TgAgent) Infof(format string, a ...any) error {
+	msg := fmt.Sprintf(format, a...)
 	return i.tgSender.SendMsg(&tg_sender.MsgStruct{
 		ChatId: i.groupId,
 		Msg:    fmt.Sprintf("[INFO] %s", msg),
@@ -29,7 +30,8 @@ func (i *TgAgent) Info(msg string) error {
 	}, 0)
 }
 
-func (i *TgAgent) Warn(msg string) error {
+func (i *TgAgent) Warnf(format string, a ...any) error {
+	msg := fmt.Sprintf(format, a...)
 	return i.tgSender.SendMsg(&tg_sender.MsgStruct{
 		ChatId: i.groupId,
 		Msg:    fmt.Sprintf("[WARN] %s", msg),
@@ -37,7 +39,8 @@ func (i *TgAgent) Warn(msg string) error {
 	}, 0)
 }
 
-func (i *TgAgent) Error(msg string) error {
+func (i *TgAgent) Errorf(format string, a ...any) error {
+	msg := fmt.Sprintf(format, a...)
 	return i.tgSender.SendMsg(&tg_sender.MsgStruct{
 		ChatId: i.groupId,
 		Msg:    fmt.Sprintf("[ERROR] %s", msg),

@@ -1,4 +1,4 @@
-package weixin
+package weixin_alert
 
 import (
 	"fmt"
@@ -52,14 +52,17 @@ func (i *WeiXinAgent) send(msg string) error {
 	return nil
 }
 
-func (i *WeiXinAgent) Info(msg string) error {
+func (i *WeiXinAgent) Infof(format string, a ...any) error {
+	msg := fmt.Sprintf(format, a...)
 	return i.send(fmt.Sprintf("[INFO] %s", msg))
 }
 
-func (i *WeiXinAgent) Warn(msg string) error {
+func (i *WeiXinAgent) Warnf(format string, a ...any) error {
+	msg := fmt.Sprintf(format, a...)
 	return i.send(fmt.Sprintf("[WARN] %s", msg))
 }
 
-func (i *WeiXinAgent) Error(msg string) error {
+func (i *WeiXinAgent) Errorf(format string, a ...any) error {
+	msg := fmt.Sprintf(format, a...)
 	return i.send(fmt.Sprintf("[ERROR] %s", msg))
 }
