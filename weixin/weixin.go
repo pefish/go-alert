@@ -35,8 +35,7 @@ func (i *WeiXinAgent) send(msg string) error {
 			Params: map[string]interface{}{
 				"msgtype": "text",
 				"text": map[string]interface{}{
-					"content":        msg,
-					"mentioned_list": []string{"@all"},
+					"content": msg,
 				},
 			},
 		},
