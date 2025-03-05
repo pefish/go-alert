@@ -2,6 +2,7 @@ package tg_alert
 
 import (
 	"fmt"
+	"time"
 
 	i_logger "github.com/pefish/go-interface/i-logger"
 	tg_sender "github.com/pefish/tg-sender"
@@ -11,13 +12,20 @@ type TgAgent struct {
 	token    string
 	tgSender *tg_sender.TgSender
 	groupId  string
+	interval time.Duration
 }
 
-func New(logger i_logger.ILogger, token string, groupId string) *TgAgent {
+func New(
+	logger i_logger.ILogger,
+	token string,
+	groupId string,
+	interval time.Duration,
+) *TgAgent {
 	return &TgAgent{
 		token:    token,
 		tgSender: tg_sender.NewTgSender(logger, token),
 		groupId:  groupId,
+		interval: interval,
 	}
 }
 
@@ -27,7 +35,7 @@ func (i *TgAgent) Infof(format string, a ...any) error {
 		ChatId: i.groupId,
 		Msg:    fmt.Sprintf("[INFO] %s", msg),
 		Ats:    nil,
-	}, 0)
+	}, i.interval)
 }
 
 func (i *TgAgent) Warnf(format string, a ...any) error {
@@ -36,7 +44,7 @@ func (i *TgAgent) Warnf(format string, a ...any) error {
 		ChatId: i.groupId,
 		Msg:    fmt.Sprintf("[WARN] %s", msg),
 		Ats:    nil,
-	}, 0)
+	}, i.interval)
 }
 
 func (i *TgAgent) Errorf(format string, a ...any) error {
@@ -45,5 +53,5 @@ func (i *TgAgent) Errorf(format string, a ...any) error {
 		ChatId: i.groupId,
 		Msg:    fmt.Sprintf("[ERROR] %s", msg),
 		Ats:    nil,
-	}, 0)
+	}, i.interval)
 }

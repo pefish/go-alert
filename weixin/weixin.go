@@ -10,18 +10,31 @@ import (
 )
 
 type WeiXinAgent struct {
-	url    string
-	logger i_logger.ILogger
+	url      string
+	logger   i_logger.ILogger
+	interval time.Duration
+	lastSend map[string]time.Time
 }
 
-func New(logger i_logger.ILogger, url string) *WeiXinAgent {
+func New(
+	logger i_logger.ILogger,
+	url string,
+	interval time.Duration,
+) *WeiXinAgent {
 	return &WeiXinAgent{
-		logger: logger,
-		url:    url,
+		logger:   logger,
+		url:      url,
+		interval: interval,
+		lastSend: make(map[string]time.Time, 10),
 	}
 }
 
 func (i *WeiXinAgent) send(msg string) error {
+	if lastTime, ok := i.lastSend[msg]; ok && time.Since(lastTime) < i.interval {
+		return errors.New("trigger interval")
+	}
+	i.lastSend[msg] = time.Now()
+
 	var httpResult struct {
 		ErrCode uint64 `json:"errcode"`
 		ErrMsg  string `json:"errmsg"`
