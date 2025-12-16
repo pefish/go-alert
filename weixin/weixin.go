@@ -39,7 +39,7 @@ func (i *WeiXinAgent) send(msg string) error {
 		ErrCode uint64 `json:"errcode"`
 		ErrMsg  string `json:"errmsg"`
 	}
-	_, _, err := go_http.HttpInstance.PostForStruct(
+	_, _, err := go_http.HttpInstance.PostJsonForStruct(
 		i.logger,
 		&go_http.RequestParams{
 			Url: i.url,

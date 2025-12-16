@@ -1,7 +1,7 @@
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/pefish/go-http v0.8.15 h1:2nAjosfsSG4pmpsrq44mRR+Z6kCpzL0ST7oMy7QywLU=
-github.com/pefish/go-http v0.8.15/go.mod h1:Nj3mYO2mL6Sj92hIC27yvVDpek6+t0LptagHsBE3H/s=
+github.com/pefish/go-http v0.8.17 h1:vKCjGeZlOj8SBP9Z+mYQVm1UthZGb6N5gl3geEkJ4Uw=
+github.com/pefish/go-http v0.8.17/go.mod h1:Nj3mYO2mL6Sj92hIC27yvVDpek6+t0LptagHsBE3H/s=
 github.com/pefish/go-interface v0.1.5 h1:ec0+NYAIN+5UYjHrpg6O8qaSquH8qQzFpZgE6g0/9iE=
 github.com/pefish/go-interface v0.1.5/go.mod h1:usSGQkQvVOKPGeDEEYpA7EnqCT/kADcLQxmfdRfMQXE=
 github.com/pefish/go-test v0.0.4 h1:s1RmZWe91K1MtENJUcl7CjGUFK/TmleZ5h3OkHq/BTI=
